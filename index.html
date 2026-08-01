@@ -1,1 +1,753 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedro Guimaray — Diseño de Paisajes y Jardines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --crema: #F3EEE3;
+    --blanco-roto: #FBF9F4;
+    --verde-bosque: #263D30;
+    --verde-bosque-2: #33503F;
+    --verde-menta: #A9C4AE;
+    --verde-menta-suave: #D9E5D9;
+    --tinta: #1C241E;
+    --linea: rgba(28,36,30,0.14);
+    --max-w: 1180px;
+  }
 
+  *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--blanco-roto);
+    color:var(--tinta);
+    font-family:'Inter', sans-serif;
+    font-weight:300;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.brand{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:300;
+    letter-spacing:-0.02em;
+    margin:0;
+    color:var(--verde-bosque);
+  }
+  a{color:inherit;}
+  img,svg{display:block;max-width:100%;}
+  .container{
+    max-width:var(--max-w);
+    margin:0 auto;
+    padding:0 24px;
+  }
+  .eyebrow{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:0.75rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--verde-bosque-2);
+    font-weight:500;
+  }
+  :focus-visible{
+    outline:2px solid var(--verde-bosque);
+    outline-offset:3px;
+  }
+
+  /* ============ HEADER ============ */
+  header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(251,249,244,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--linea);
+  }
+  .nav-wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:20px 24px;
+    max-width:var(--max-w);
+    margin:0 auto;
+  }
+  .brand{
+    font-size:1.15rem;
+    font-weight:500;
+    text-decoration:none;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .brand-mark{width:26px;height:26px;flex-shrink:0;}
+  nav ul{
+    list-style:none;
+    display:flex;
+    gap:36px;
+    margin:0;
+    padding:0;
+  }
+  nav a{
+    text-decoration:none;
+    font-size:0.92rem;
+    color:var(--verde-bosque);
+    font-weight:400;
+    position:relative;
+    padding-bottom:4px;
+  }
+  nav a::after{
+    content:'';
+    position:absolute;
+    left:0;bottom:0;
+    width:0;height:1px;
+    background:var(--verde-bosque);
+    transition:width .3s ease;
+  }
+  nav a:hover::after{width:100%;}
+  .nav-cta{
+    border:1px solid var(--verde-bosque);
+    padding:9px 20px;
+    border-radius:100px;
+    font-size:0.85rem;
+  }
+  .nav-cta::after{display:none;}
+  .nav-cta:hover{background:var(--verde-bosque);color:var(--blanco-roto);}
+
+  .menu-btn{
+    display:none;
+    background:none;
+    border:none;
+    cursor:pointer;
+    width:32px;height:32px;
+    padding:0;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:6px;
+  }
+  .menu-btn span{
+    width:22px;height:1.5px;
+    background:var(--verde-bosque);
+    transition:transform .3s ease, opacity .3s ease;
+  }
+  .menu-btn.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
+  .menu-btn.open span:nth-child(2){opacity:0;}
+  .menu-btn.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);}
+
+  /* ============ HERO ============ */
+  .hero{
+    padding:88px 0 96px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:48px;
+    align-items:center;
+  }
+  .hero-eyebrow{margin-bottom:22px;}
+  .hero h1{
+    font-size:clamp(2.6rem, 8vw, 4.6rem);
+    line-height:1.03;
+    font-weight:300;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--verde-bosque-2);
+    font-weight:500;
+  }
+  .hero p.lead{
+    margin-top:26px;
+    max-width:46ch;
+    font-size:1.08rem;
+    color:var(--verde-bosque-2);
+  }
+  .hero-actions{
+    margin-top:38px;
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:14px 28px;
+    border-radius:100px;
+    font-family:'Space Grotesk', sans-serif;
+    font-size:0.92rem;
+    font-weight:500;
+    text-decoration:none;
+    cursor:pointer;
+    border:1px solid var(--verde-bosque);
+    transition:all .25s ease;
+  }
+  .btn-primary{
+    background:var(--verde-bosque);
+    color:var(--blanco-roto);
+  }
+  .btn-primary:hover{background:var(--verde-bosque-2);}
+  .btn-ghost{
+    background:transparent;
+    color:var(--verde-bosque);
+  }
+  .btn-ghost:hover{background:var(--verde-menta-suave);}
+
+  .hero-visual{
+    position:relative;
+    aspect-ratio:1/1;
+    max-width:420px;
+    margin:0 auto;
+  }
+  .hero-visual svg{width:100%;height:100%;}
+
+  .branch-path{
+    stroke:var(--verde-bosque);
+    stroke-width:1.4;
+    fill:none;
+    stroke-dasharray:900;
+    stroke-dashoffset:900;
+    animation:draw 2.4s ease forwards .3s;
+  }
+  .leaf{
+    fill:var(--verde-menta);
+    opacity:0;
+    animation:fadein .8s ease forwards;
+    transform-origin:center;
+  }
+  @keyframes draw{to{stroke-dashoffset:0;}}
+  @keyframes fadein{to{opacity:1;}}
+
+  .stat-row{
+    display:flex;
+    gap:40px;
+    margin-top:64px;
+    padding-top:32px;
+    border-top:1px solid var(--linea);
+    flex-wrap:wrap;
+  }
+  .stat-num{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:2rem;
+    font-weight:500;
+    color:var(--verde-bosque);
+  }
+  .stat-label{
+    font-size:0.82rem;
+    color:var(--verde-bosque-2);
+    max-width:16ch;
+  }
+
+  /* ============ SECTION SHELL ============ */
+  section{padding:96px 0;}
+  .section-head{
+    max-width:640px;
+    margin-bottom:64px;
+  }
+  .section-head h2{
+    font-size:clamp(2rem, 4.5vw, 2.8rem);
+    margin-top:14px;
+  }
+  .divider{
+    width:100%;
+    height:1px;
+    background:var(--linea);
+  }
+
+  /* ============ SERVICIOS ============ */
+  .servicios{background:var(--crema);}
+  .servicios-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:1px;
+    background:var(--linea);
+    border:1px solid var(--linea);
+  }
+  .servicio-card{
+    background:var(--crema);
+    padding:40px 32px;
+    transition:background .3s ease;
+  }
+  .servicio-card:hover{background:var(--verde-menta-suave);}
+  .servicio-index{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:0.8rem;
+    color:var(--verde-bosque-2);
+    letter-spacing:0.15em;
+  }
+  .servicio-card h3{
+    font-size:1.4rem;
+    margin-top:20px;
+    font-weight:400;
+  }
+  .servicio-card p{
+    margin-top:14px;
+    font-size:0.95rem;
+    color:var(--verde-bosque-2);
+    max-width:32ch;
+  }
+  .servicio-icon{
+    width:36px;height:36px;
+    margin-bottom:8px;
+  }
+
+  /* ============ SOBRE MI ============ */
+  .sobre{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:48px;
+    align-items:start;
+  }
+  .sobre-photo{
+    width:100%;
+    aspect-ratio:4/5;
+    border-radius:4px;
+    background:
+      linear-gradient(180deg, rgba(38,61,48,0.06), rgba(38,61,48,0.14)),
+      repeating-linear-gradient(115deg, var(--verde-menta-suave) 0 18px, var(--verde-menta) 18px 36px);
+    position:relative;
+    overflow:hidden;
+  }
+  .sobre-photo::after{
+    content:'P.G.';
+    position:absolute;
+    bottom:20px;left:20px;
+    font-family:'Space Grotesk', sans-serif;
+    font-size:0.8rem;
+    letter-spacing:0.15em;
+    color:var(--verde-bosque);
+    background:var(--blanco-roto);
+    padding:6px 12px;
+    border-radius:100px;
+  }
+  .sobre-text p{margin-top:18px;color:var(--verde-bosque-2);}
+  .sobre-text .lead-text{
+    font-size:1.25rem;
+    color:var(--verde-bosque);
+    font-weight:300;
+    line-height:1.5;
+  }
+  .valores{
+    margin-top:36px;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+  .valor{
+    padding-top:18px;
+    border-top:1px solid var(--linea);
+  }
+  .valor h4{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:500;
+    color:var(--verde-bosque);
+    font-size:1rem;
+    margin:0 0 6px;
+  }
+  .valor p{margin:0;font-size:0.9rem;color:var(--verde-bosque-2);}
+
+  /* ============ CONTACTO ============ */
+  .contacto{background:var(--verde-bosque);color:var(--blanco-roto);}
+  .contacto .eyebrow{color:var(--verde-menta);}
+  .contacto .section-head h2{color:var(--blanco-roto);}
+  .contacto-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:56px;
+  }
+  .contacto-info p{color:var(--verde-menta-suave);max-width:38ch;}
+  .contacto-detail{
+    margin-top:32px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+  }
+  .contacto-detail div{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+    border-top:1px solid rgba(251,249,244,0.16);
+    padding-top:14px;
+  }
+  .contacto-detail span.label{
+    font-size:0.75rem;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    color:var(--verde-menta);
+  }
+  .contacto-detail span.value{font-size:1rem;}
+
+  form{display:flex;flex-direction:column;gap:20px;}
+  .field{display:flex;flex-direction:column;gap:8px;}
+  .field label{
+    font-size:0.8rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--verde-menta);
+  }
+  .field input,.field textarea{
+    background:transparent;
+    border:none;
+    border-bottom:1px solid rgba(251,249,244,0.35);
+    color:var(--blanco-roto);
+    font-family:'Inter', sans-serif;
+    font-size:1rem;
+    padding:10px 2px;
+    resize:none;
+    transition:border-color .25s ease;
+  }
+  .field input::placeholder,.field textarea::placeholder{color:rgba(251,249,244,0.4);}
+  .field input:focus,.field textarea:focus{
+    border-color:var(--verde-menta);
+    outline:none;
+  }
+  .form-submit{
+    margin-top:10px;
+    align-self:flex-start;
+    background:var(--verde-menta);
+    color:var(--verde-bosque);
+    border:1px solid var(--verde-menta);
+  }
+  .form-submit:hover{background:var(--blanco-roto);border-color:var(--blanco-roto);}
+  .form-msg{
+    font-size:0.9rem;
+    color:var(--verde-menta);
+    min-height:20px;
+  }
+
+  /* ============ FOOTER ============ */
+  footer{
+    background:var(--verde-bosque);
+    color:var(--verde-menta-suave);
+    border-top:1px solid rgba(251,249,244,0.14);
+    padding:40px 0;
+  }
+  .footer-grid{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    align-items:flex-start;
+    justify-content:space-between;
+    font-size:0.85rem;
+  }
+  .footer-grid .brand{color:var(--blanco-roto);}
+  footer nav ul{
+    display:flex;
+    gap:24px;
+    list-style:none;
+    padding:0;margin:0;
+    flex-wrap:wrap;
+  }
+  footer nav a{
+    text-decoration:none;
+    color:var(--verde-menta-suave);
+    font-size:0.85rem;
+  }
+  footer nav a:hover{color:var(--blanco-roto);}
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    width:100%;
+    padding-top:20px;
+    border-top:1px solid rgba(251,249,244,0.14);
+    font-size:0.78rem;
+    color:rgba(217,229,217,0.6);
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .branch-path,.leaf{animation:none;stroke-dashoffset:0;opacity:1;}
+    nav a::after{transition:none;}
+  }
+
+  /* ============ TABLET / DESKTOP ============ */
+  @media (min-width:720px){
+    .servicios-grid{grid-template-columns:repeat(3,1fr);}
+    .sobre{grid-template-columns:0.85fr 1.15fr;}
+    .valores{grid-template-columns:1fr 1fr;}
+    .contacto-grid{grid-template-columns:1fr 1.1fr;}
+    .footer-grid{flex-direction:row;align-items:center;}
+  }
+
+  @media (min-width:900px){
+    .hero-grid{grid-template-columns:1.1fr 0.9fr;}
+  }
+
+  @media (max-width:719px){
+    nav ul{
+      position:fixed;
+      top:73px;left:0;right:0;
+      flex-direction:column;
+      background:var(--blanco-roto);
+      padding:28px 24px;
+      gap:22px;
+      border-bottom:1px solid var(--linea);
+      transform:translateY(-8px);
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .25s ease, transform .25s ease;
+    }
+    nav ul.open{
+      opacity:1;
+      transform:translateY(0);
+      pointer-events:auto;
+    }
+    .nav-cta{display:inline-block;width:fit-content;}
+    .menu-btn{display:flex;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <a href="#top" class="brand">
+      <svg class="brand-mark" viewBox="0 0 26 26" fill="none">
+        <path d="M13 24C13 24 4 19 4 11.5C4 6.5 8 3 13 3C18 3 22 6.5 22 11.5C22 19 13 24 13 24Z" stroke="#263D30" stroke-width="1.4"/>
+        <path d="M13 24V9" stroke="#263D30" stroke-width="1.4"/>
+      </svg>
+      Pedro Guimaray
+    </a>
+    <nav>
+      <ul id="navList">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#contacto" class="nav-cta">Agendar visita</a></li>
+      </ul>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="navList">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow hero-eyebrow">Diseño de paisajes &amp; jardines</p>
+        <h1>Jardines que <em>crecen</em><br>con su propio tiempo.</h1>
+        <p class="lead">Diseño espacios verdes pensados para el clima, el suelo y las personas que los habitan — de patios íntimos a parques residenciales.</p>
+        <div class="hero-actions">
+          <a href="#contacto" class="btn btn-primary">Solicitar consulta</a>
+          <a href="#servicios" class="btn btn-ghost">Ver servicios</a>
+        </div>
+        <div class="stat-row">
+          <div>
+            <div class="stat-num">12</div>
+            <div class="stat-label">años diseñando jardines</div>
+          </div>
+          <div>
+            <div class="stat-num">140+</div>
+            <div class="stat-label">proyectos entregados</div>
+          </div>
+          <div>
+            <div class="stat-num">100%</div>
+            <div class="stat-label">especies adaptadas al lugar</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <svg viewBox="0 0 400 400" fill="none">
+          <path class="branch-path" d="M200 380 C 200 300, 170 280, 170 220 C 170 160, 200 140, 200 90 M170 220 C 130 210, 110 180, 90 150 M200 150 C 230 130, 250 100, 260 60 M200 260 C 160 250, 130 260, 100 290 M200 200 C 240 195, 265 210, 290 240"/>
+          <ellipse class="leaf" cx="90" cy="150" rx="16" ry="8" transform="rotate(-40 90 150)" style="animation-delay:1.6s"/>
+          <ellipse class="leaf" cx="260" cy="60" rx="18" ry="9" transform="rotate(30 260 60)" style="animation-delay:1.8s"/>
+          <ellipse class="leaf" cx="100" cy="290" rx="17" ry="8.5" transform="rotate(-20 100 290)" style="animation-delay:2s"/>
+          <ellipse class="leaf" cx="290" cy="240" rx="15" ry="7.5" transform="rotate(15 290 240)" style="animation-delay:2.2s"/>
+          <ellipse class="leaf" cx="200" cy="90" rx="19" ry="9.5" style="animation-delay:2.4s"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider container" style="max-width:1180px;margin:0 auto;"></div>
+
+  <!-- ============ SERVICIOS ============ -->
+  <section class="servicios" id="servicios">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Servicios</p>
+        <h2>Cada jardín parte de una lectura del lugar.</h2>
+      </div>
+      <div class="servicios-grid">
+
+        <article class="servicio-card">
+          <svg class="servicio-icon" viewBox="0 0 36 36" fill="none"><path d="M18 32V16M18 16C18 16 8 15 8 6C13 6 18 9 18 16Z" stroke="#263D30" stroke-width="1.3"/><path d="M18 20C18 20 26 19 26 10C21 10 18 13 18 20Z" stroke="#263D30" stroke-width="1.3"/></svg>
+          <p class="servicio-index">01</p>
+          <h3>Diseño de jardines</h3>
+          <p>Planos y selección vegetal a medida, combinando forma, sombra y floración según cada estación.</p>
+        </article>
+
+        <article class="servicio-card">
+          <svg class="servicio-icon" viewBox="0 0 36 36" fill="none"><rect x="7" y="14" width="22" height="14" rx="1" stroke="#263D30" stroke-width="1.3"/><path d="M7 14L18 6L29 14" stroke="#263D30" stroke-width="1.3"/><path d="M14 28V20H22V28" stroke="#263D30" stroke-width="1.3"/></svg>
+          <p class="servicio-index">02</p>
+          <h3>Paisajismo residencial</h3>
+          <p>Integramos patios, terrazas y fachadas verdes al conjunto arquitectónico de la vivienda.</p>
+        </article>
+
+        <article class="servicio-card">
+          <svg class="servicio-icon" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="11" stroke="#263D30" stroke-width="1.3"/><path d="M18 11V18L23 21" stroke="#263D30" stroke-width="1.3"/></svg>
+          <p class="servicio-index">03</p>
+          <h3>Mantenimiento estacional</h3>
+          <p>Cuidado continuo del jardín: poda, riego eficiente y ajustes según el ciclo de cada especie.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SOBRE MI ============ -->
+  <section id="sobre-mi">
+    <div class="container sobre">
+      <div class="sobre-photo"></div>
+      <div class="sobre-text">
+        <p class="eyebrow">Sobre mí</p>
+        <h2 style="margin-top:14px;font-size:clamp(1.9rem,4vw,2.5rem);">Pedro Guimaray</h2>
+        <p class="lead-text">Diseño jardines desde hace más de una década, con la convicción de que un buen paisaje respeta primero el terreno que lo recibe.</p>
+        <p>Formado en arquitectura de paisaje, he trabajado junto a familias, estudios de arquitectura y municipios en proyectos que van desde patios pequeños hasta espacios públicos completos.</p>
+        <p>Cada propuesta empieza con una visita al lugar: observo la luz, el viento, el tipo de suelo y cómo las personas van a usar el espacio antes de dibujar la primera línea.</p>
+
+        <div class="valores">
+          <div class="valor">
+            <h4>Plantas locales</h4>
+            <p>Priorizo especies nativas y de bajo consumo de agua.</p>
+          </div>
+          <div class="valor">
+            <h4>Diseño a medida</h4>
+            <p>Ningún jardín se repite: cada plano responde a su propio terreno.</p>
+          </div>
+          <div class="valor">
+            <h4>Acompañamiento</h4>
+            <p>Sigo el proyecto desde el boceto hasta la primera temporada de crecimiento.</p>
+          </div>
+          <div class="valor">
+            <h4>Sostenibilidad</h4>
+            <p>Sistemas de riego y suelo pensados para reducir el mantenimiento.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTO ============ -->
+  <section class="contacto" id="contacto">
+    <div class="container contacto-grid">
+      <div class="contacto-info">
+        <p class="eyebrow">Contacto</p>
+        <h2 style="margin-top:14px;font-size:clamp(1.9rem,4vw,2.5rem);">Conversemos sobre su espacio.</h2>
+        <p>Cuénteme sobre el terreno, el uso que le quiere dar y el estilo que imagina. Respondo en 1 a 2 días hábiles.</p>
+        <div class="contacto-detail">
+          <div>
+            <span class="label">Correo</span>
+            <span class="value">contacto@pedroguimaray.com</span>
+          </div>
+          <div>
+            <span class="label">Teléfono</span>
+            <span class="value">+51 943 000 000</span>
+          </div>
+          <div>
+            <span class="label">Zona de trabajo</span>
+            <span class="value">Chimbote y alrededores, Áncash</span>
+          </div>
+        </div>
+      </div>
+
+      <form id="contactForm" novalidate>
+        <div class="field">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Su nombre completo" required>
+        </div>
+        <div class="field">
+          <label for="email">Correo</label>
+          <input type="email" id="email" name="email" placeholder="usted@correo.com" required>
+        </div>
+        <div class="field">
+          <label for="mensaje">Cuénteme sobre su proyecto</label>
+          <textarea id="mensaje" name="mensaje" rows="4" placeholder="Tamaño del espacio, estilo, plazos..." required></textarea>
+        </div>
+        <button type="submit" class="btn form-submit">Enviar mensaje</button>
+        <p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <a href="#top" class="brand">Pedro Guimaray</a>
+    <nav>
+      <ul>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 Pedro Guimaray. Todos los derechos reservados.</span>
+    <span>Diseño de paisajes &amp; jardines</span>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    const menuBtn = document.getElementById('menuBtn');
+    const navList = document.getElementById('navList');
+
+    menuBtn.addEventListener('click', function(){
+      const isOpen = navList.classList.toggle('open');
+      menuBtn.classList.toggle('open', isOpen);
+      menuBtn.setAttribute('aria-expanded', isOpen);
+    });
+
+    navList.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', function(){
+        navList.classList.remove('open');
+        menuBtn.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Header shadow on scroll
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', function(){
+      header.style.boxShadow = window.scrollY > 8 ? '0 1px 0 rgba(28,36,30,0.06)' : 'none';
+    });
+
+    // Contact form
+    const form = document.getElementById('contactForm');
+    const msg = document.getElementById('formMsg');
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      const nombre = form.nombre.value.trim();
+      const email = form.email.value.trim();
+      const mensaje = form.mensaje.value.trim();
+      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+      if(!nombre || !emailOk || !mensaje){
+        msg.textContent = 'Por favor complete todos los campos con un correo válido.';
+        msg.style.color = '#E8B4A0';
+        return;
+      }
+
+      msg.style.color = '';
+      msg.textContent = 'Gracias, ' + nombre.split(' ')[0] + '. Su mensaje fue enviado — le responderé pronto.';
+      form.reset();
+    });
+  })();
+</script>
+
+</body>
+</html>
